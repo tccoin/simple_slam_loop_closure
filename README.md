@@ -14,13 +14,7 @@ and *bag of words* to translate them to a global image description vector.
 
 ## The dataset
 
-For testing, I've used the New College dataset published alongside FAB-MAP.
-It's available for download
-[here](http://www.ijrr.org/ijrr_2008/volume27-issue6/090961/3_data.htm). It's
-ideal for loop-closure testing, since it includes manual place associations
-that can be used for evaluation. The `scripts/download_data.sh` will
-download the data files (bag of words vocabulary and images) needed to run
-the code.
+The vocabulary file is availble at [Google Drive](https://drive.google.com/file/d/1_5rV_Y6pqp6jm6lb-Kooe_uzuhaqXT3r/view?usp=sharing).
 
 ## Building with Docker
 
