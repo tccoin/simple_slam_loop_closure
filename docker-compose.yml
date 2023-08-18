@@ -1,7 +1,8 @@
 version: '3'
 services:
   runner:
-    build: .
+    image: simple_slam_loop_closure:latest
     volumes:
       - .:/src
+      - /home/link/Projects/unified_cvo/test_data/kitti_05_sample:/kitti
     working_dir: /src
