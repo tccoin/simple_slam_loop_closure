@@ -1,8 +1,17 @@
 version: '3'
 services:
   runner:
-    image: simple_slam_loop_closure:latest
+    image: tccoin/simple_slam_loop_closure:latest
     volumes:
       - .:/src
-      - /home/link/Projects/unified_cvo/test_data/kitti_05_sample:/kitti
+      - /home/shared/data/kitty05/:/kitti
     working_dir: /src
+    command: bash
+    tty: true
+    stdin_open: true
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_REQUIRE_CUDA=cuda>=9.0

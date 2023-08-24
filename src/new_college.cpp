@@ -68,16 +68,38 @@ int main(int argc, char *argv[])
     exit(1);
   }
 
-  // Compute confusion matrix
+  // Compute confusion matrix (only lower triangular part)
   // i.e. the (i, j) element of the matrix contains the distance
   // between the BoW representation of frames i and j
-  for (int i = 0; i < bow_vecs.size(); i++)
+
+  // First row should be all 0s
+  for (int j = 0; j < bow_vecs.size() - 1; j++)
   {
-    for (int j = i + 1; j < bow_vecs.size(); j++)
+    of << "0,";
+  }
+  of << "0\n";
+  // Remaining rows (j>=i should be 0)
+  for (int i = 1; i < bow_vecs.size(); i++)
+  {
+    for (int j = 0; j < bow_vecs.size(); j++)
     {
-      of << descriptor.vocab_->score(bow_vecs[i], bow_vecs[j]) << " ";
+      if (j < i)
+      {
+        of << descriptor.vocab_->score(bow_vecs[i], bow_vecs[j]) << ",";
+      }
+      else if (j < bow_vecs.size() - 1)
+      {
+        of << "0,";
+      }
+      else
+      {
+        of << "0";
+      }
     }
-    of << "\n";
+    if (i < bow_vecs.size() - 1)
+    {
+      of << "\n";
+    }
   }
 
   of.close();
