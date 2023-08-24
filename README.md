@@ -31,7 +31,7 @@ docker-compose build runner
 docker-compose run runner bash
 # You're now in a shell inside the Docker container, build and run the code:
 ./scripts/build.sh
-./build/new_college ./data/brief_k10L6.voc.gz ./data
+./build/kitti_loop_detection ./data/brief_k10L6.voc.gz ./data/kitti ./results/output.txt 5
 ```
 
 ## Compatibility

@@ -56,12 +56,12 @@ include_directories(
   ${DEPENDENCY_DIR}/install/include)
 
 
-add_executable(new_college
-    src/new_college.cpp)
-target_link_libraries(new_college
+add_executable(kitti_loop_detection
+    src/kitti_loop_detection.cpp)
+target_link_libraries(kitti_loop_detection
     ${OpenCV_LIBS}
     ${EIGEN3_LIBS}
     ${DLib_LIBS}
     ${DBoW2_LIBS})
-add_dependencies(new_college
+add_dependencies(kitti_loop_detection
     Dependencies)

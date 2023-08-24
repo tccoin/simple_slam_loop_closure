@@ -15,13 +15,14 @@
 
 int main(int argc, char *argv[])
 {
-  std::string vocabulary_path("/src/data/surf64_k10L6.voc.gz");
+  std::string vocabulary_path = argv[1];
+  std::string dataset_folder = argv[2];
+  std::string output_path = argv[3];
+  int interval = std::stoi(argv[4]);
+
   slc::FrameDescriptor descriptor(vocabulary_path);
-  int interval = std::stoi(argv[1]);
 
-  std::string dataset_folder("/kitti/image_2/");
   std::vector<std::string> filenames;
-
   for (int i = 0; i < 2761; i += interval)
   {
     std::stringstream ss;
@@ -58,8 +59,6 @@ int main(int argc, char *argv[])
 
   std::cerr << "\nWriting output...\n";
 
-  std::string output_path("results/confusion_" + std::to_string(interval) +
-                          ".txt");
   std::ofstream of;
   of.open(output_path);
   if (of.fail())
