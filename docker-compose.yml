@@ -1,10 +1,11 @@
 version: '3'
 services:
-  runner:
+  loop_closure:
     image: tccoin/simple_slam_loop_closure:latest
     volumes:
       - .:/src
-      - /home/shared/data/kitty05/:/kitti
+      - /media/sdg1/rzh/kitti/kitti/sequences/:/kitti
+      - /home/junzhewu/:/ws
     working_dir: /src
     command: bash
     tty: true

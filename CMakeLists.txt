@@ -3,6 +3,7 @@ project(simple_slam_loop_closure)
 
 include(ExternalProject)
 
+
 IF(NOT CMAKE_BUILD_TYPE)
   SET(CMAKE_BUILD_TYPE Release)
 ENDIF()
@@ -11,7 +12,7 @@ MESSAGE("Build type: " ${CMAKE_BUILD_TYPE})
 
 add_definitions(-std=c++11 -Wall -O3 -march=native)
 
-find_package(OpenCV 3 REQUIRED)
+find_package(OpenCV REQUIRED)
 find_package(Eigen3 REQUIRED)
 
 include_directories(
