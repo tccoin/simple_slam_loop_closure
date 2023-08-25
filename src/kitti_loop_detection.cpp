@@ -9,21 +9,32 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <experimental/filesystem>
 
 #include "frame_descriptor.h"
 #include "utils.h"
 
 int main(int argc, char *argv[])
 {
-  std::string vocabulary_path = argv[1];
-  std::string dataset_folder = argv[2];
-  std::string output_path = argv[3];
+  std::string vocabulary_path(argv[1]);
+  std::string dataset_folder(argv[2]);
+  std::string output_path(argv[3]);
   int interval = std::stoi(argv[4]);
+
+  int fileCount = 0;
+  for (const auto &entry : std::experimental::filesystem::directory_iterator(dataset_folder))
+  {
+    if (std::experimental::filesystem::is_regular_file(entry.status()))
+    {
+      fileCount++;
+    }
+  }
+  std::cout << "Number of frames: " << fileCount << std::endl;
 
   slc::FrameDescriptor descriptor(vocabulary_path);
 
   std::vector<std::string> filenames;
-  for (int i = 0; i < 2761; i += interval)
+  for (int i = 0; i < fileCount; i += interval)
   {
     std::stringstream ss;
     ss << std::setw(6) << std::setfill('0') << i;

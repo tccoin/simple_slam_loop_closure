@@ -12,7 +12,7 @@ MESSAGE("Build type: " ${CMAKE_BUILD_TYPE})
 
 add_definitions(-std=c++11 -Wall -O3 -march=native)
 
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 3 REQUIRED)
 find_package(Eigen3 REQUIRED)
 
 include_directories(
@@ -63,6 +63,7 @@ target_link_libraries(kitti_loop_detection
     ${OpenCV_LIBS}
     ${EIGEN3_LIBS}
     ${DLib_LIBS}
-    ${DBoW2_LIBS})
+    ${DBoW2_LIBS}
+    stdc++fs)
 add_dependencies(kitti_loop_detection
     Dependencies)
