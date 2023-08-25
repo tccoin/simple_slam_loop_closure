@@ -14,7 +14,7 @@ and *bag of words* to translate them to a global image description vector.
 
 ## The dataset
 
-The vocabulary file is availble at [Google Drive](https://drive.google.com/file/d/1_5rV_Y6pqp6jm6lb-Kooe_uzuhaqXT3r/view?usp=sharing).
+The vocabulary file is availble at [here](https://github.com/tccoin/simple_slam_loop_closure/releases/download/v0.1/surf64_k10L6.voc.gz).
 
 ## Building with Docker
 
