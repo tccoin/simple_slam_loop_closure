@@ -57,13 +57,13 @@ include_directories(
   ${DEPENDENCY_DIR}/install/include)
 
 
-add_executable(kitti_loop_detection
-    src/kitti_loop_detection.cpp)
-target_link_libraries(kitti_loop_detection
+add_executable(loop_detection
+    src/loop_detection.cpp)
+target_link_libraries(loop_detection
     ${OpenCV_LIBS}
     ${EIGEN3_LIBS}
     ${DLib_LIBS}
     ${DBoW2_LIBS}
     stdc++fs)
-add_dependencies(kitti_loop_detection
+add_dependencies(loop_detection
     Dependencies)

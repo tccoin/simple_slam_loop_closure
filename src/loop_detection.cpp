@@ -22,31 +22,33 @@ int main(int argc, char *argv[])
   int interval = std::stoi(argv[4]);
 
   int fileCount = 0;
+  std::vector<std::string> filenames;
   for (const auto &entry : std::experimental::filesystem::directory_iterator(dataset_folder))
   {
     if (std::experimental::filesystem::is_regular_file(entry.status()))
     {
       fileCount++;
+      filenames.push_back(entry.path().filename().string());
     }
   }
+
+  // Sort filenames
+  std::sort(filenames.begin(), filenames.end());
+
+  // print dataset information
   std::cout << "Number of frames: " << fileCount << std::endl;
-
-  slc::FrameDescriptor descriptor(vocabulary_path);
-
-  std::vector<std::string> filenames;
-  for (int i = 0; i < fileCount; i += interval)
+  std::cout << "First 10 filenames:"<<std::endl;
+  for (int i = 0; i < 10; i++)
   {
-    std::stringstream ss;
-    ss << std::setw(6) << std::setfill('0') << i;
-    std::string file_name = ss.str() + ".png";
-    filenames.push_back(file_name);
+    std::cout << filenames[i] << std::endl;
   }
-
-  std::cerr << "Processing " << filenames.size() << " images\n";
 
   // Will hold BoW representations for each frame
   std::vector<DBoW2::BowVector> bow_vecs;
   bow_vecs.reserve(filenames.size());
+
+  // Load vocabulary
+  slc::FrameDescriptor descriptor(vocabulary_path);
 
   for (unsigned int img_i = 0; img_i < filenames.size(); img_i++)
   {

@@ -3,10 +3,9 @@ services:
   loop_closure:
     image: tccoin/simple_slam_loop_closure:latest
     volumes:
-      - .:/src
-      - /media/sdg1/rzh/kitti/kitti/sequences/:/kitti
-      - /home/junzhewu/:/ws
-    working_dir: /src
+      - /home/link/Projects/curly_slam/data/:/dataset
+      - /home/link/Projects/simple_slam_loop_closure/:/ws
+    working_dir: /ws
     command: bash
     tty: true
     stdin_open: true
