@@ -35,6 +35,14 @@ int main(int argc, char *argv[])
   // Sort filenames
   std::sort(filenames.begin(), filenames.end());
 
+  // Filter filenames
+  std::vector<std::string> filtered_filenames;
+  for (int i = 0; i < fileCount; i += interval)
+  {
+    filtered_filenames.push_back(filenames[i]);
+  }
+  filenames = filtered_filenames;
+
   // print dataset information
   std::cout << "Number of frames: " << fileCount << std::endl;
   std::cout << "First 10 filenames:"<<std::endl;

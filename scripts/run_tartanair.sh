@@ -1,1 +1,1 @@
-exec build/loop_detection data/surf64_k10L6.voc.gz /dataset/tartanair/scenes/abandonedfactory/Easy/P006/image_left/ /ws/results/confusion_tartanair_af_P006.txt 5
+exec build/loop_detection data/surf64_k10L6.voc.gz /dataset/tartanair/scenes/abandonedfactory/Easy/P006/image_left/ /ws/results/confusion_tartanair_af_P006_5.txt 5
